@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Learnatics Teacher Dashboard</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #c7d8fd);
+  }
+  .main {
+    width: 100%; min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; padding: 15px;
+  }
+  h1 {
+    font-size: 3em; margin-bottom: 10px; color: #2a3eb1;
+    text-shadow: 0 0 10px #acc5ff;
+  }
+  .card {
+    width: 98%; max-width: 1300px;
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    padding: 24px; margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-around;
+  }
+  .section {
+    flex: 1 1 320px; min-width: 300px; margin: 10px; padding: 15px; border-radius: 10px;
+    background: #f9f9f9; box-shadow: 0 2px 8px #ccc;
+  }
+  h2 {
+    text-align: center; color: #0d47a1; margin-bottom: 10px;
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin-top: 15px;
+  }
+  th, td {
+    border: 1px solid #a6b9ff; padding: 10px; text-align: center;
+  }
+  th {
+    background-color: #c2d0ff; color: #2a3eb1; font-weight: 600;
+  }
+  button {
+    background: #304ffe;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    box-shadow: 0 3px 12px #7e9dff80;
+    transition: background 0.25s;
+  }
+  button:hover {
+    background: #1a35c2;
+  }
+  .charts {
+    display: flex; gap: 50px; flex-wrap: wrap; justify-content: center; margin-top: 20px;
+  }
+  .chart-container {
+    background: #fff; padding: 10px 14px; border-radius: 8px; box-shadow: 0 1px 8px #cfd2df30;
+    text-align: center;
+  }
+  .chart-container img {
+    max-width: 170px; height:auto;
+  }
+</style>
+<script>
+  function reviewSubmission(name) {
+    alert('Reviewing submissions for ' + name + ' (Demo only).');
+  }
+</script>
+</head>
+<body>
+<div class="main">
+  <h1>Learnatics - Teacher Dashboard</h1>
+  <div class="card">
+    <div class="section">
+      <h2>Student Submissions</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Submitted</th><th>Review</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alice</td>
+            <td>5</td>
+            <td><button onclick="reviewSubmission('Alice')">Review</button></td>
+          </tr>
+          <tr>
+            <td>Bob</td>
+            <td>4</td>
+            <td><button onclick="reviewSubmission('Bob')">Review</button></td>
+          </tr>
+          <tr>
+            <td>Charlie</td>
+            <td>6</td>
+            <td><button onclick="reviewSubmission('Charlie')">Review</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <h2>Performance & Insights</h2>
+      <div class="charts">
+        <div class="chart-container">
+          <div style="font-weight:bold; margin-bottom:8px;">Student Attendance Breakdown</div>
+          <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/606991bb3d8308a65515395a5af7e79b/e6e77711-0b7a-4b15-b811-e4d4b9e5a8b0/2c5673b4.png" alt="Attendance Pie Chart" />
+        </div>
+        <div class="chart-container">
+          <div style="font-weight:bold; margin-bottom:8px;">Student Submission Counts</div>
+          <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/606991bb3d8308a65515395a5af7e79b/161d49db-0020-46f9-82a1-b427bee4bad9/9637f4a3.png" alt="Submissions Bar Chart" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const username = localStorage.getItem('username') || 'Guest';
+    const role = localStorage.getItem('role') || 'student';
+    const heading = document.querySelector('h1');
+
+    if (heading) {
+      heading.textContent = `Welcome ${username} (${role.toUpperCase()})`;
+    }
+
+    // Add Logout button
+    const logoutBtn = document.createElement("button");
+    logoutBtn.textContent = "Logout";
+    logoutBtn.style.cssText =
+      "position:fixed;top:15px;right:20px;background:#f44336;color:#fff;padding:8px 14px;border:none;border-radius:6px;cursor:pointer;font-weight:600;";
+    logoutBtn.addEventListener("click", function() {
+      localStorage.clear();
+      window.location.href = 'routing.html';
+    });
+    document.body.appendChild(logoutBtn);
+  });
+</script>
+
+
+</body>
+</html>
